@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic Example</title>
+    <link href="MainPageCss.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- <textarea id="inputText" placeholder="Enter your text here..."
+        style="width: 100%; height: 150px; margin-top: 20px;"></textarea>
+    <button onclick="saveText()">Save</button> -->
+
+
+
+    <div>
+
+
+        <table id="contentTable"></table>
+        <button id="loadMoreButton" style="display: none;" onclick="loadMore()">Load More</button>
+
+    </div>
+
+    <script>
+        const data =
+            ["Значимость этих проблем настолько очевидна, что выбранный нами инновационный путь обеспечивает актуальность экономической целесообразности принимаемых решений!",
+                "Не следует, однако, забывать о том, что новая модель организационной деятельности создаёт предпосылки качественно новых шагов для дальнейших направлений развитая системы массового участия. Значимость этих проблем настолько очевидна, что выбранный нами инновационный путь обеспечивает актуальность экономической целесообразности принимаемых решений!",
+                "Равным образом курс на социально-ориентированный национальный проект представляет собой интересный эксперимент проверки форм воздействия. ",
+                "Равным образом курс  ",
+                "Равным ",
+                "Не следует, однако, забывать о том, что дальнейшее развитие различных форм деятельности требует от нас системного анализа существующих финансовых и административных условий! Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции требует от нас системного анализа дальнейших направлений развитая системы массового участия!     Разнообразный и...",
+                "Таким образом, повышение уровня гражданского сознания напрямую зависит от модели развития! Практический опыт показывает, что социально-экономическое развитие обеспечивает актуальность всесторонне сбалансированных нововведений! ",
+            "Не следует, однако, забывать о том, что новая модель организационной деятельности создаёт предпосылки качественно новых шагов для дальнейших направлений развитая системы массового участия. Значимость этих проблем настолько очевидна, что выбранный нами инновационный путь обеспечивает актуальность экономической целесообразности принимаемых решений!",
+                "Равным образом курс на социально-ориентированный национальный проект представляет собой интересный эксперимент проверки форм воздействия. ",
+                "Равным образом курс  "
+            ];
+        let displayedCount = 3;
+        displayData();
+
+
+        // //убрать пото
+        // data.push('Test');
+
+
+
+        // function saveText() {
+        //     const inputText = document.getElementById('inputText').value;
+        //     if (inputText.trim() !== '') {
+        //         data.push(inputText);
+        //         document.getElementById('inputText').value = ''; // Clear the textarea
+        //         displayData();
+        //     }
+        // }
+
+        function displayData() {
+
+            const contentTableBody = document.getElementById("contentTable");
+            contentTableBody.innerHTML = '';
+
+            const start = Math.max(data.length - displayedCount, 0);
+
+            const dataToShow = data.slice(start, data.length).reverse();
+
+            dataToShow.forEach((text, index) => {
+
+                const newRow = document.createElement("tr");
+
+                if (isEven(index)) {
+
+                    const Column = document.createElement("td");
+                    Column.innerHTML = 
+                    `
+                    <div class="container">
+                        <div class="container-left"></div>
+                        <div class="container-center"><div class="container-center-block">${start + dataToShow.length - index}</div></div>
+                        <div class="container-right"><div class="container-right-block">${text}</div></div>
+                    </div>
+                    `;
+                    newRow.appendChild(Column);
+
+                } else {
+
+                    const Column = document.createElement("td");
+                    Column.innerHTML = 
+                    `
+                    <div class="container">
+                    <div class="container-left"><div class="container-left-block">${text}</div></div>
+                    <div class="container-center"><div class="container-center-block">${start + dataToShow.length - index}</div></div>
+                    <div class="container-right"></div>
+                    </div>
+                    `;
+                    newRow.appendChild(Column);
+
+                }
+
+                contentTableBody.appendChild(newRow);
+
+            });
+
+
+            const loadMoreButton = document.getElementById('loadMoreButton');
+            if (displayedCount < data.length) {
+                loadMoreButton.style.display = 'block';
+            } else {
+                loadMoreButton.style.display = 'none';
+            }
+        }
+
+        function isEven(number) {
+            return number % 2 === 0;
+        }
+
+        function loadMore() {
+            displayedCount += 3;
+            displayData();
+        }
+    </script>
+
+</body>
+
+</html>
