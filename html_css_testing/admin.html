@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование текста</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .editor {
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 200px;
+            margin-bottom: 10px;
+        }
+        .toolbar button {
+            margin-right: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f8f8f8;
+            white-space: pre-wrap; /* Сохраняет форматирование */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toolbar">
+        <button onclick="document.execCommand('bold', false, '');"><b>Жирный</b></button>
+        <button onclick="document.execCommand('italic', false, '');"><i>Курсив</i></button>
+        <button onclick="document.execCommand('underline', false, '');"><u>Подчёркнутый</u></button>
+        <button onclick="document.execCommand('strikeThrough', false, '');"><s>Зачёркнутый</s></button>
+        <button onclick="document.execCommand('justifyLeft', false, '');">По левому краю</button>
+        <button onclick="document.execCommand('justifyCenter', false, '');">По центру</button>
+        <button onclick="document.execCommand('justifyRight', false, '');">По правому краю</button>
+        <button onclick="document.execCommand('insertOrderedList', false, '');">Нумерованный список</button>
+        <button onclick="document.execCommand('insertUnorderedList', false, '');">Маркированный список</button>
+        <button onclick="makeLink()">Сделать ссылкой</button>
+        <button onclick="updateOutput()">Показать HTML</button>
+    </div>
+
+    <div class="editor" contenteditable="true">
+        Введите текст здесь...
+    </div>
+
+    <div class="output" id="output">
+        Здесь будет отображаться итоговый HTML-код
+    </div>
+
+    <script>
+        function updateOutput() {
+            const editorContent = document.querySelector('.editor').innerHTML;
+            const output = document.getElementById('output');
+            output.textContent = editorContent.trim();
+        }
+
+        function makeLink() {
+            const url = prompt("Введите URL для ссылки:", "https://");
+            if (url) {
+                document.execCommand('createLink', false, url);
+            }
+        }
+
+        // Добавляем подсветку рамки при фокусе на редакторе
+        const editor = document.querySelector('.editor');
+        editor.addEventListener('focus', () => {
+            editor.style.borderColor = '#007BFF';
+        });
+        editor.addEventListener('blur', () => {
+            editor.style.borderColor = '#ccc';
+        });
+    </script>
+
+</body>
+</html>
