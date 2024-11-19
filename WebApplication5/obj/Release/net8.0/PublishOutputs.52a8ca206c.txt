@@ -1,0 +1,7 @@
+D:\Новая папка (2)\WebApplication5\WebApplication5\obj\Release\net8.0\PubTmp\Out\WebApplication5.exe
+D:\Новая папка (2)\WebApplication5\WebApplication5\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+D:\Новая папка (2)\WebApplication5\WebApplication5\obj\Release\net8.0\PubTmp\Out\appsettings.json
+D:\Новая папка (2)\WebApplication5\WebApplication5\obj\Release\net8.0\PubTmp\Out\WebApplication5.dll
+D:\Новая папка (2)\WebApplication5\WebApplication5\obj\Release\net8.0\PubTmp\Out\WebApplication5.deps.json
+D:\Новая папка (2)\WebApplication5\WebApplication5\obj\Release\net8.0\PubTmp\Out\WebApplication5.runtimeconfig.json
+D:\Новая папка (2)\WebApplication5\WebApplication5\obj\Release\net8.0\PubTmp\Out\WebApplication5.pdb
